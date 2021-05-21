@@ -1,17 +1,30 @@
 package com.TestTask.Controllers;
 
 import com.TestTask.Entity.Order;
+import com.TestTask.Services.GoodsService;
+import com.TestTask.Services.OrderService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import com.TestTask.DAO.OrderDAO;
 
-@Controller
+import java.util.Date;
+
+@RestController
 public class MainCon {
 
-    private OrderDAO orderDAO;
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private GoodsService goodsService;
 
-    @RequestMapping("/asdf")
-    public void cf(){
-        orderDAO.save(new Order());
+    @GetMapping("/Add")
+    public String Add(){
+        goodsService.addGoods("12",12);
+        orderService.addOrder("Евгений","Пушкинская 18");
+        return "Add";
     }
+
 }

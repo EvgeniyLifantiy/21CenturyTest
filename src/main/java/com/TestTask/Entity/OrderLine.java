@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Entity
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class OrderLine {
 
@@ -18,9 +17,24 @@ public class OrderLine {
     @GeneratedValue
     private long id;
 
-    @ManyToOne
+    @OneToOne
+    @JoinTable(
+            name = "order",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
     private Order order;
 
-    @ManyToOne
+    @OneToOne
+            @JoinTable(
+            name = "goods",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
     private Goods goods;
+
+    public OrderLine(Order order, Goods goods) {
+        this.order = order;
+        this.goods = goods;
+    }
 }

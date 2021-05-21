@@ -12,13 +12,12 @@ import java.util.Date;
 @Table(name = "purchase")// "order" reserved by h2
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Order {
 
     @Id
     @GeneratedValue
-    @Column(nullable = false)
+    @Column(name = "order_id",nullable = false)
     private Long id=1l;
 
     private String client;
@@ -28,5 +27,10 @@ public class Order {
 
     private String address;
 
+    public Order(String client, Date dateOfBirth, String address) {
+        this.client = client;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+    }
 }
 
