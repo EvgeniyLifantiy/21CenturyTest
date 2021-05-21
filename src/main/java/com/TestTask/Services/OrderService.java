@@ -1,6 +1,7 @@
 package com.TestTask.Services;
 
 import com.TestTask.DAO.OrderDAO;
+import com.TestTask.Entity.Goods;
 import com.TestTask.Entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,12 @@ public class OrderService {
 
     private OrderDAO orderDAO;
 
-    public void addOrder(String name,String adress){
+    public Order findById(int id){
+        return orderDAO.findById((long) id).get();
+    }
 
-        orderDAO.save(new Order(name,new Date(),adress));
+    public void addOrder(Order order){
+
+        orderDAO.save(order);
     }
 }

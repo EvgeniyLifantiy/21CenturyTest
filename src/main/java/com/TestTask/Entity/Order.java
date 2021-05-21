@@ -23,13 +23,13 @@ public class Order {
     private String client;
 
     @Temporal(TemporalType.DATE)
-    private Date dateOfBirth;
+    private Date date;
 
     private String address;
 
     public Order(String client, Date dateOfBirth, String address) {
         this.client = client;
-        this.dateOfBirth = dateOfBirth;
+        this.date = dateOfBirth;
         this.address = address;
     }
 }

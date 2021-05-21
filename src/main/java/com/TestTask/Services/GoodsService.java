@@ -16,8 +16,11 @@ public class GoodsService {
 
     GoodsDAO goodsDAO;
 
-    public void addGoods(String name,int price){
+    public Goods findById(int id){
+        return goodsDAO.findById((long) id).get();
+    }
 
-        goodsDAO.save(new Goods(name,price));
+    public void addGoods(Goods goods){
+        goodsDAO.save(goods);
     }
 }

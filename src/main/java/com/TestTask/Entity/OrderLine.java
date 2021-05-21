@@ -17,20 +17,10 @@ public class OrderLine {
     @GeneratedValue
     private long id;
 
-    @OneToOne
-    @JoinTable(
-            name = "order",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id")
-    )
+    @OneToOne(cascade = CascadeType.ALL)
     private Order order;
 
-    @OneToOne
-            @JoinTable(
-            name = "goods",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id")
-    )
+    @OneToOne(cascade = CascadeType.ALL)
     private Goods goods;
 
     public OrderLine(Order order, Goods goods) {

@@ -1,7 +1,9 @@
 package com.TestTask.Controllers;
 
 import com.TestTask.Entity.Order;
+import com.TestTask.Services.EntityCreateService;
 import com.TestTask.Services.GoodsService;
+import com.TestTask.Services.OrderLineService;
 import com.TestTask.Services.OrderService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,16 +17,13 @@ import java.util.Date;
 @RestController
 public class MainCon {
 
-    @Autowired
-    private OrderService orderService;
-    @Autowired
-    private GoodsService goodsService;
+   @Autowired
+   private EntityCreateService entityCreateService;
 
     @GetMapping("/Add")
     public String Add(){
-        goodsService.addGoods("12",12);
-        orderService.addOrder("Евгений","Пушкинская 18");
-        return "Add";
+        entityCreateService.add();
+        return "";
     }
 
 }
